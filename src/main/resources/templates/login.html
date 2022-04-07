@@ -15,7 +15,7 @@
 <body>
 <header th:replace="fragments/header"></header>
 <main class="form-signin text-center">
-    <form action="login" method="post">
+    <form th:action="@{/login}" method="post">
         <h1 class="h3 mb-3 fw-normal">Пожалуйста, войдите</h1>
 
         <div class="form-floating pb-1">
