@@ -1,11 +1,15 @@
 package ru.tisbi.volgait.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
     @Email(message = "Введите валидный email!")
     @NotBlank(message = "Email не должен быть пустым!")
