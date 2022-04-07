@@ -9,17 +9,17 @@ import ru.tisbi.volgait.registration.domain.User;
 import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
 import ru.tisbi.volgait.registration.repository.UserRepository;
-import ru.tisbi.volgait.registration.service.UserService;
+import ru.tisbi.volgait.registration.service.RegistrationService;
 
 @Slf4j
 @Service
-public class UserServiceImpl implements UserService {
+public class RegistrationServiceImpl implements RegistrationService {
 
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public RegistrationServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }

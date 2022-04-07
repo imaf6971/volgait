@@ -17,7 +17,7 @@ public enum RegistrationErrorType {
     private final Exception cause;
     private final ObjectError objectError;
 
-    private RegistrationErrorType(Exception cause, ObjectError objectError) {
+    RegistrationErrorType(Exception cause, ObjectError objectError) {
         this.cause = cause;
         this.objectError = objectError;
     }

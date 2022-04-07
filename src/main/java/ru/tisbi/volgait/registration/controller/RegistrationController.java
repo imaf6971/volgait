@@ -11,17 +11,17 @@ import ru.tisbi.volgait.registration.domain.UserDto;
 import ru.tisbi.volgait.registration.controller.error.RegistrationErrorType;
 import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
-import ru.tisbi.volgait.registration.service.UserService;
+import ru.tisbi.volgait.registration.service.RegistrationService;
 
 import javax.validation.Valid;
 
 @Controller
 public class RegistrationController {
 
-    private final UserService userService;
+    private final RegistrationService registrationService;
 
-    public RegistrationController(UserService userService) {
-        this.userService = userService;
+    public RegistrationController(RegistrationService registrationService) {
+        this.registrationService = registrationService;
     }
 
     @GetMapping("/registration")
@@ -38,7 +38,7 @@ public class RegistrationController {
             return "registration";
         }
         try {
-            userService.register(user);
+            registrationService.register(user);
         } catch (EmailAlreadyTakenException | PasswordsDoesntMatchException e) {
             bindingResult.addError(RegistrationErrorType.getObjectError(e));
             return "registration";

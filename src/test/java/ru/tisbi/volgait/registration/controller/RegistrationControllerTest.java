@@ -11,7 +11,7 @@ import org.springframework.validation.FieldError;
 import ru.tisbi.volgait.registration.domain.UserDto;
 import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
-import ru.tisbi.volgait.registration.service.UserService;
+import ru.tisbi.volgait.registration.service.RegistrationService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -25,7 +25,7 @@ import static org.mockito.Mockito.verify;
 class RegistrationControllerTest {
 
     @Mock
-    private UserService userService;
+    private RegistrationService userService;
 
     @Mock
     private Model model;
