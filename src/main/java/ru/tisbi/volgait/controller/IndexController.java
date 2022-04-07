@@ -16,4 +16,8 @@ public class IndexController {
         return "login";
     }
 
+    @GetMapping("/secured")
+    public String secured() {
+        return "secured";
+    }
 }

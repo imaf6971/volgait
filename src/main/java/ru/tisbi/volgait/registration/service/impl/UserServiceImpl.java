@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.tisbi.volgait.controller.UserDto;
 import ru.tisbi.volgait.registration.domain.User;
 import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
@@ -16,6 +17,7 @@ import ru.tisbi.volgait.registration.service.UserService;
 
 import static org.springframework.security.core.userdetails.User.withUsername;
 
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
@@ -52,6 +54,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("searching user {}", username);
         User user = userRepository.findByEmail(username)
                 .orElseThrow(
                         () -> new UsernameNotFoundException("User " + username + " not found!"));
