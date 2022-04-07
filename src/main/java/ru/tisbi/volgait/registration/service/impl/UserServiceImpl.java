@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import ru.tisbi.volgait.controller.UserDto;
 import ru.tisbi.volgait.registration.domain.User;
@@ -15,6 +16,7 @@ import ru.tisbi.volgait.registration.service.UserService;
 
 import static org.springframework.security.core.userdetails.User.withUsername;
 
+@Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
