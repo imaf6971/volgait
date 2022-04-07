@@ -1,8 +1,9 @@
 package ru.tisbi.volgait.registration.exception;
 
-public class EmailAlreadyTakenException extends RuntimeException {
+public class EmailAlreadyTakenException extends RegistrationException {
 
     public EmailAlreadyTakenException() {
+        super();
     }
 
     public EmailAlreadyTakenException(String arg0) {

@@ -1,8 +1,9 @@
 package ru.tisbi.volgait.registration.exception;
 
-public class PasswordsDoesntMatchException extends RuntimeException {
+public class PasswordsDoesntMatchException extends RegistrationException {
 
     public PasswordsDoesntMatchException() {
+        super();
     }
 
     public PasswordsDoesntMatchException(String arg0) {
