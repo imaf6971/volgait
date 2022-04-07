@@ -1,5 +1,6 @@
 package ru.tisbi.volgait.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,21 +19,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder(12);
     }
 
-    @Bean
-    protected UserDetailsService userDetailsService(UserRepository repository) {
-        return new UserDetailsServiceImpl(repository);
-    }
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // auth.userDetailsService(userDetailsService())
-        // .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
         auth.inMemoryAuthentication()
-        .withUser("user1@mail.com").password(passwordEncoder().encode("user1Pass")).roles("USER")
-        .and()
-        .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("USER")
-        .and()
-        .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
+                .withUser("user1@mail.com").password(passwordEncoder().encode("user1Pass")).roles("USER")
+                .and()
+                .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("USER")
+                .and()
+                .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
     }
 
     @Override
@@ -43,6 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/secured").authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
-                .loginProcessingUrl("/login").permitAll();
+                .loginProcessingUrl("/login").permitAll()
+                .and()
+                .logout().logoutUrl("/logout");
     }
 }
