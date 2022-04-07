@@ -5,7 +5,7 @@ services:
     image: 'application-analythics:latest'
     build:
       context: .
-    container_name: app
+    container_name: application-analythics
     depends_on:
       - db
     ports:
@@ -17,7 +17,7 @@ services:
 
   db:
     image: 'postgres:alpine'
-    container_name: db
+    container_name: application-analythics-db
     environment:
       - POSTGRES_USER=volgadb
       - POSTGRES_PASSWORD=dm9sZ2FkYnBhc3N3b3Jk
