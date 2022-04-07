@@ -14,8 +14,6 @@ import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
 import ru.tisbi.volgait.registration.service.RegistrationService;
 
-import java.lang.ref.ReferenceQueue;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -25,7 +23,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class RegistrationControllerTest {
+class RegistrationControllerUnitTest {
 
     @Mock
     private RegistrationService userService;
