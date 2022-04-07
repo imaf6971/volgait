@@ -6,11 +6,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import ru.tisbi.volgait.registration.domain.UserDto;
 import ru.tisbi.volgait.registration.controller.error.RegistrationErrorType;
-import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
-import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
+import ru.tisbi.volgait.registration.domain.RegistrationForm;
+import ru.tisbi.volgait.registration.domain.UserDto;
+import ru.tisbi.volgait.registration.exception.RegistrationException;
 import ru.tisbi.volgait.registration.service.RegistrationService;
 
 import javax.validation.Valid;
@@ -26,23 +25,27 @@ public class RegistrationController {
 
     @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new UserDto());
+        model.addAttribute("user", new RegistrationForm());
         return "registration";
     }
 
     @PostMapping("/registration")
     public String register(
-            @ModelAttribute("user") @Valid UserDto user,
+            @ModelAttribute("user") @Valid RegistrationForm form,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
         try {
-            registrationService.register(user);
-        } catch (EmailAlreadyTakenException | PasswordsDoesntMatchException e) {
+            registrationService.register(convertToDto(form));
+        } catch (RegistrationException e) {
             bindingResult.addError(RegistrationErrorType.getObjectError(e));
             return "registration";
         }
         return "index";
+    }
+
+    UserDto convertToDto(RegistrationForm form) {
+        return new UserDto(form.getEmail(), form.getPassword(), form.getMatchingPassword());
     }
 }

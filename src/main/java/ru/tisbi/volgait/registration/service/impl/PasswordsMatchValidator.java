@@ -11,7 +11,9 @@ public class PasswordsMatchValidator implements RegistrationValidator {
 
     @Override
     public void validate(UserDto userToValidate) throws RegistrationException {
-        if (!userToValidate.isPasswordsMatch()) {
+        String password = userToValidate.getPassword();
+        String matchingPassword = userToValidate.getMatchingPassword();
+        if (!password.equals(matchingPassword)) {
             throw new PasswordsDoesntMatchException("UserDto passwords doesnt match!");
         }
     }

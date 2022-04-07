@@ -8,10 +8,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import ru.tisbi.volgait.registration.domain.RegistrationForm;
 import ru.tisbi.volgait.registration.domain.UserDto;
 import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
 import ru.tisbi.volgait.registration.service.RegistrationService;
+
+import java.lang.ref.ReferenceQueue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -76,44 +79,44 @@ class RegistrationControllerTest {
     void testCallsAddAttributeWithNewUser() {
         underTest.showRegistrationForm(model);
         verify(model)
-                .addAttribute(any(), eq(new UserDto()));
+                .addAttribute(any(), eq(new RegistrationForm()));
     }
 
     @Test
     void testCallsHasErrors() {
-        underTest.register(new UserDto(), bindingResult);
+        underTest.register(new RegistrationForm(), bindingResult);
         verify(bindingResult)
                 .hasErrors();
     }
 
     @Test
     void testCallsHasErrorsOnlyOnce() {
-        underTest.register(new UserDto(), bindingResult);
+        underTest.register(new RegistrationForm(), bindingResult);
         verify(bindingResult, times(1))
                 .hasErrors();
     }
 
     @Test
     void testCallsServiceForRegistration() {
-        underTest.register(new UserDto(), bindingResult);
+        underTest.register(new RegistrationForm(), bindingResult);
         verify(userService)
                 .register(any());
     }
 
     @Test
     void testCallsServiceForRegistrationOnlyOnce() {
-        underTest.register(new UserDto(), bindingResult);
+        underTest.register(new RegistrationForm(), bindingResult);
         verify(userService, times(1))
                 .register(any());
     }
 
     @Test
     void testCallsServiceRegisterWithRightArguments() {
-        UserDto arg = new UserDto("johndoe@mail.com", "password", "password");
+        RegistrationForm arg = new RegistrationForm("johndoe@mail.com", "password", "password");
 
         underTest.register(arg, bindingResult);
         verify(userService)
-                .register(eq(arg));
+                .register(eq(new UserDto("johndoe@mail.com", "password", "password")));
     }
 
     @Test
@@ -122,7 +125,7 @@ class RegistrationControllerTest {
                 .when(userService)
                 .register(any());
 
-        underTest.register(new UserDto(), bindingResult);
+        underTest.register(new RegistrationForm(), bindingResult);
         verify(bindingResult)
                 .addError(any());
     }
@@ -133,7 +136,7 @@ class RegistrationControllerTest {
                 .when(userService)
                 .register(any());
 
-        underTest.register(new UserDto(), bindingResult);
+        underTest.register(new RegistrationForm(), bindingResult);
         verify(bindingResult)
                 .addError(eq(new FieldError("user", "email", "Пользователь с такой почтой уже существует!")));
     }
@@ -144,7 +147,7 @@ class RegistrationControllerTest {
                 .when(userService)
                 .register(any());
 
-        underTest.register(new UserDto(), bindingResult);
+        underTest.register(new RegistrationForm(), bindingResult);
         verify(bindingResult)
                 .addError(any());
     }
@@ -155,7 +158,7 @@ class RegistrationControllerTest {
                 .when(userService)
                 .register(any());
 
-        underTest.register(new UserDto(), bindingResult);
+        underTest.register(new RegistrationForm(), bindingResult);
         verify(bindingResult)
                 .addError(eq(new FieldError("user", "matchingPassword", "Пароли не совпадают!")));
     }

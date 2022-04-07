@@ -7,7 +7,7 @@ import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
 
 public enum RegistrationErrorType {
-    PASSWORDS_UNMATCH(
+    PASSWORDS_UNMATCHED(
         new PasswordsDoesntMatchException(),
         new FieldError("user", "matchingPassword", "Пароли не совпадают!")),
     EMAIL_TAKEN(
