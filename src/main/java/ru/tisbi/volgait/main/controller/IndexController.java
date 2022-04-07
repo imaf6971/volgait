@@ -1,4 +1,4 @@
-package ru.tisbi.volgait.controller;
+package ru.tisbi.volgait.main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +11,4 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/secured")
-    public String secured() {
-        return "secured";
-    }
 }
