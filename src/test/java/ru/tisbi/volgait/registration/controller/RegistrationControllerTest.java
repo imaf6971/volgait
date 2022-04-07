@@ -139,7 +139,7 @@ class RegistrationControllerTest {
     }
 
     @Test
-    void testWhenPasswordsUnmatchThenObjectErrorWasAdded() {
+    void testWhenPasswordsUnmatchedThenObjectErrorWasAdded() {
         doThrow(new PasswordsDoesntMatchException())
                 .when(userService)
                 .register(any());
@@ -150,7 +150,7 @@ class RegistrationControllerTest {
     }
 
     @Test
-    void testWhenPasswordsUnmatchThenRightObjectErrorWasAdded() {
+    void testWhenPasswordsUnmatchedThenRightObjectErrorWasAdded() {
         doThrow(new PasswordsDoesntMatchException())
                 .when(userService)
                 .register(any());
