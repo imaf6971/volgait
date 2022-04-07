@@ -1,4 +1,4 @@
-package ru.tisbi.volgait.controller;
+package ru.tisbi.volgait.registration.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,5 @@
 package ru.tisbi.volgait.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,9 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
+import ru.tisbi.volgait.auth.service.UserDetailsServiceImpl;
 import ru.tisbi.volgait.registration.repository.UserRepository;
-import ru.tisbi.volgait.registration.service.impl.UserServiceImpl;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -21,8 +19,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    protected UserDetailsService userDetailsService(UserRepository repository, PasswordEncoder passwordEncoder) {
-        return new UserServiceImpl(repository, passwordEncoder);
+    protected UserDetailsService userDetailsService(UserRepository repository) {
+        return new UserDetailsServiceImpl(repository);
     }
 
     @Override

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import ru.tisbi.volgait.controller.UserDto;
+import ru.tisbi.volgait.registration.domain.UserDto;
 import ru.tisbi.volgait.registration.controller.error.RegistrationErrorType;
 import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;

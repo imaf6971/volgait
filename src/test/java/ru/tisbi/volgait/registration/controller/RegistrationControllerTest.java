@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import ru.tisbi.volgait.controller.UserDto;
+import ru.tisbi.volgait.registration.domain.UserDto;
 import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
 import ru.tisbi.volgait.registration.service.UserService;
