@@ -8,6 +8,9 @@
 <div>
     <header th:replace="fragments/header"></header>
     <h1 class="text-center">Аналитика Приложений</h1>
+    <h1 th:if="${apps_counter}">
+        Приложений добавлено: <b><span th:text="${apps_counter}"></span></b>
+    </h1>
 </div>
 </body>
 </html>

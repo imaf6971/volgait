@@ -1,5 +1,8 @@
 package ru.tisbi.volgait.registration.controller;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +16,7 @@ import ru.tisbi.volgait.registration.exception.RegistrationException;
 import ru.tisbi.volgait.registration.service.RegistrationService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Controller
 public class RegistrationController {
@@ -39,13 +43,23 @@ public class RegistrationController {
         try {
             registrationService.register(convertToDto(form));
         } catch (RegistrationException e) {
-            bindingResult.addError(RegistrationErrorType.getObjectError(e));
-            return "registration";
+            return errorView(e, bindingResult);
         }
-        return "index";
+        authenticateNewUser(form);
+        return "redirect:/";
     }
 
-    UserDto convertToDto(RegistrationForm form) {
+    private String errorView(RegistrationException e, BindingResult bindingResult) {
+        bindingResult.addError(RegistrationErrorType.getObjectError(e));
+        return "registration";
+    }
+
+    private void authenticateNewUser(RegistrationForm form) {
+        Authentication auth = new UsernamePasswordAuthenticationToken(form.getEmail(), form.getPassword(), new ArrayList<>());
+        SecurityContextHolder.getContext().setAuthentication(auth);
+    }
+
+    private UserDto convertToDto(RegistrationForm form) {
         return new UserDto(form.getEmail(), form.getPassword(), form.getMatchingPassword());
     }
 }
