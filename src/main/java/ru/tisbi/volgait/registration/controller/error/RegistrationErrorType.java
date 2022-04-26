@@ -5,24 +5,25 @@ import org.springframework.validation.ObjectError;
 
 import ru.tisbi.volgait.registration.exception.EmailAlreadyTakenException;
 import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
+import ru.tisbi.volgait.registration.exception.RegistrationException;
 
 public enum RegistrationErrorType {
-    PASSWORDS_UNMATCH(
+    PASSWORDS_UNMATCHED(
         new PasswordsDoesntMatchException(),
         new FieldError("user", "matchingPassword", "Пароли не совпадают!")),
     EMAIL_TAKEN(
         new EmailAlreadyTakenException(),
         new FieldError("user", "email", "Пользователь с такой почтой уже существует!"));
 
-    private final Exception cause;
+    private final RegistrationException cause;
     private final ObjectError objectError;
 
-    private RegistrationErrorType(Exception cause, ObjectError objectError) {
+    RegistrationErrorType(RegistrationException cause, ObjectError objectError) {
         this.cause = cause;
         this.objectError = objectError;
     }
 
-    public static ObjectError getObjectError(Exception e) {
+    public static ObjectError getObjectError(RegistrationException e) {
         for (RegistrationErrorType type: RegistrationErrorType.values()) {
             if (type.cause.equals(e)) {
                 return type.objectError;
