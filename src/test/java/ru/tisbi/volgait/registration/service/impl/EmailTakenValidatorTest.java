@@ -7,10 +7,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import ru.tisbi.volgait.registration.EmailAlreadyTakenException;
-import ru.tisbi.volgait.registration.UserRepository;
-import ru.tisbi.volgait.registration.domain.UserDto;
-import ru.tisbi.volgait.registration.exception.RegistrationException;
+import ru.tisbi.volgait.security.registration.EmailAlreadyTakenException;
+import ru.tisbi.volgait.security.registration.UserRepository;
+import ru.tisbi.volgait.security.registration.domain.UserDto;
+import ru.tisbi.volgait.security.registration.exception.RegistrationException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;

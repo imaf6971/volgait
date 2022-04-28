@@ -1,8 +1,9 @@
 package ru.tisbi.volgait.registration.service.impl;
 
 import org.junit.jupiter.api.Test;
-import ru.tisbi.volgait.registration.domain.UserDto;
-import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
+
+import ru.tisbi.volgait.security.registration.domain.UserDto;
+import ru.tisbi.volgait.security.registration.exception.PasswordsDoesntMatchException;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;

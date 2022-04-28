@@ -1,4 +1,4 @@
-package ru.tisbi.volgait.registration;
+package ru.tisbi.volgait.security.registration;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

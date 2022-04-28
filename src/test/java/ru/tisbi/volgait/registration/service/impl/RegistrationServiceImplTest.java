@@ -7,11 +7,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import ru.tisbi.volgait.registration.RegistrationService;
-import ru.tisbi.volgait.registration.RegistrationServiceImpl;
-import ru.tisbi.volgait.registration.UserRepository;
-import ru.tisbi.volgait.registration.domain.UserDto;
-import ru.tisbi.volgait.registration.service.RegistrationValidator;
+import ru.tisbi.volgait.security.registration.RegistrationService;
+import ru.tisbi.volgait.security.registration.RegistrationServiceImpl;
+import ru.tisbi.volgait.security.registration.UserRepository;
+import ru.tisbi.volgait.security.registration.domain.UserDto;
+import ru.tisbi.volgait.security.registration.service.RegistrationValidator;
 
 import java.util.ArrayList;
 import java.util.List;

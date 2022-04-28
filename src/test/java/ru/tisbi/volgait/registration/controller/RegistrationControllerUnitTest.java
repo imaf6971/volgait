@@ -9,12 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import ru.tisbi.volgait.registration.EmailAlreadyTakenException;
-import ru.tisbi.volgait.registration.RegistrationController;
-import ru.tisbi.volgait.registration.RegistrationForm;
-import ru.tisbi.volgait.registration.RegistrationService;
-import ru.tisbi.volgait.registration.domain.UserDto;
-import ru.tisbi.volgait.registration.exception.PasswordsDoesntMatchException;
+import ru.tisbi.volgait.security.registration.EmailAlreadyTakenException;
+import ru.tisbi.volgait.security.registration.RegistrationController;
+import ru.tisbi.volgait.security.registration.RegistrationForm;
+import ru.tisbi.volgait.security.registration.RegistrationService;
+import ru.tisbi.volgait.security.registration.domain.UserDto;
+import ru.tisbi.volgait.security.registration.exception.PasswordsDoesntMatchException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
