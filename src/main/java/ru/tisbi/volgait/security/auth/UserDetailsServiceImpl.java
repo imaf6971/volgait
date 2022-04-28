@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import ru.tisbi.volgait.security.registration.UserRepository;
+import ru.tisbi.volgait.security.core.UserRepository;
 
 import java.util.ArrayList;
 

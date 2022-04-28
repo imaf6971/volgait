@@ -7,9 +7,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import ru.tisbi.volgait.security.core.UserRepository;
 import ru.tisbi.volgait.security.registration.RegistrationService;
 import ru.tisbi.volgait.security.registration.RegistrationServiceImpl;
-import ru.tisbi.volgait.security.registration.UserRepository;
 import ru.tisbi.volgait.security.registration.domain.UserDto;
 import ru.tisbi.volgait.security.registration.service.RegistrationValidator;
 
