@@ -1,5 +1,7 @@
 package ru.tisbi.volgait.applications;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,4 +17,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     public Long countUserApplications(String email) {
         return applicationRepository.countByCreatedBy_Email(email);
     }
+
+	@Override
+	public List<Application> findApplicationsByEmail(String name) {
+		return applicationRepository.findByCreatedBy_email(name);
+	}
 }
