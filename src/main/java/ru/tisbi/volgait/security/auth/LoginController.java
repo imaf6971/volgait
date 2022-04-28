@@ -1,4 +1,4 @@
-package ru.tisbi.volgait.auth.controller;
+package ru.tisbi.volgait.security.auth;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

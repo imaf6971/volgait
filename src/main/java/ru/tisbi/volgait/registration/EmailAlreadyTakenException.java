@@ -1,8 +1,10 @@
-package ru.tisbi.volgait.registration.exception;
+package ru.tisbi.volgait.registration;
 
-public class EmailAlreadyTakenException extends RegistrationException {
+public class EmailAlreadyTakenException extends RuntimeException {
 
-    public EmailAlreadyTakenException() {
+	private static final long serialVersionUID = -2580442846828163322L;
+
+	public EmailAlreadyTakenException() {
         super();
     }
 
