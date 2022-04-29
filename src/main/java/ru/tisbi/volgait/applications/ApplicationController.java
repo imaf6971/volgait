@@ -21,4 +21,11 @@ public class ApplicationController {
 		model.addAttribute("applications", applicationService.findApplicationsByEmail(authentication.getName()));
 		return "applications";
 	}
+	
+	@GetMapping("/add")
+	public String addApplicationForm(Model model) {
+		var applicationForm = new ApplicationForm();
+		model.addAttribute("app", applicationForm);
+		return "add-application";
+	}
 }

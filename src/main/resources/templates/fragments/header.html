@@ -3,7 +3,7 @@
     <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Главная страница</a></li>
     <div sec:authorize="isAuthenticated()" th:remove="tag">
       <li class="nav-item"><a href="/applications" class="nav-link">Список приложений</a></li>
-      <li class="nav-item"><a href="/add-application" class="nav-link">Добавить Приложение</a></li>
+      <li class="nav-item"><a href="/applications/add" class="nav-link">Добавить Приложение</a></li>
     </div>
   </ul>
   <div sec:authorize="!isAuthenticated()" class="col-md-3 text-end">

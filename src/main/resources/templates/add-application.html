@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:replace="fragments/meta">
+    <style>
+        .app-form {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+    </style>
+    <title>Добавить приложение</title>
+</head>
+<body>
+<header th:replace="fragments/header"></header>
+<main class="app-form text-center">
+    <form th:object="${app}" th:action="@{/applications/add}" method="post">
+        <h1 class="h3 mb-3 fw-normal">Добавить приложение</h1>
+
+        <div class="form-floating mb-3">	
+            <input th:field="*{uuid}" class="form-control">
+            <label for="floatingInput">Уникальный идентификатор</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input th:field="*{title}" class="form-control">
+            <label for="floatingPassword">Название</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Добавить приложение</button>
+    </form>
+</main>
+
+</body>
