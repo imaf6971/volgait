@@ -7,4 +7,6 @@ public interface ApplicationService {
     Long countUserApplications(String email);
 
 	List<Application> findApplicationsByEmail(String name);
+
+	void addApplication(ApplicationForm form);
 }

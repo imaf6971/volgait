@@ -1,7 +1,9 @@
 package ru.tisbi.volgait.security.user;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
 	
 	private final UserRepository userRepository;
