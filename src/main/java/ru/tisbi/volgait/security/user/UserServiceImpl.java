@@ -2,7 +2,7 @@ package ru.tisbi.volgait.security.user;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
 	
 	private final UserRepository userRepository;
 
@@ -10,6 +10,7 @@ public class UserServiceImpl {
 		this.userRepository = userRepository;
 	}
 	
+	@Override
 	public User getCurrentUser() {
 		var securityContext = SecurityContextHolder.getContext();
 		var authentication = securityContext.getAuthentication();
