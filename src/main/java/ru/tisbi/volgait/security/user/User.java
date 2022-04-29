@@ -1,4 +1,4 @@
-package ru.tisbi.volgait.security.core;
+package ru.tisbi.volgait.security.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
