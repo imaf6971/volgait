@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta th:replace="fragments/meta">
+  <title>Список приложений</title>
+</head>
+<header th:replace="fragments/header"/>
+<body>
+  <div class="container">
+    <h1 class="row justify-content-center mb-4">
+      Список приложений
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="list-group">
+            <a th:each="app: ${applications}" class="list-group-item list-group-item-action" >
+              <span th:text="${app.title}"></span>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
