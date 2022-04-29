@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import ru.tisbi.volgait.model.AbstractEntity;
-import ru.tisbi.volgait.security.core.User;
+import ru.tisbi.volgait.security.user.User;
 
 @Entity
 @Table(name = "applications")
