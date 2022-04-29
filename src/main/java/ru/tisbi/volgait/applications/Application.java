@@ -24,4 +24,29 @@ public class Application extends AbstractEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", updatable = false)
     private User createdBy;
+
+	public UUID getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
+    
 }
