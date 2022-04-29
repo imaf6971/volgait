@@ -1,5 +1,7 @@
 package ru.tisbi.volgait.security.registration;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class RegistrationController {
 
 	private final RegistrationService registrationService;
-
+	
 	public RegistrationController(RegistrationService registrationService) {
 		this.registrationService = registrationService;
 	}
@@ -25,12 +27,20 @@ public class RegistrationController {
 	}
 
 	@PostMapping("/registration")
-	public String register(@ModelAttribute("user") @Valid RegistrationForm form, BindingResult bindingResult) {
+	public String register(@ModelAttribute("user") @Valid RegistrationForm form, BindingResult bindingResult, HttpServletRequest httpRequest) {
 		if (bindingResult.hasErrors()) {
 			return "registration";
 		}
 		registrationService.register(form);
+		authenticateNewUser(form, httpRequest);
 		return "redirect:/";
 	}
-
+	
+	private void authenticateNewUser(RegistrationForm user, HttpServletRequest httpRequest) {
+		try {
+			httpRequest.login(user.getEmail(), user.getPassword());
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
+	}
 }
