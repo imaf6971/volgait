@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class AbstractEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id", unique = true, nullable = false)
@@ -21,5 +21,5 @@ public abstract class AbstractEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 }

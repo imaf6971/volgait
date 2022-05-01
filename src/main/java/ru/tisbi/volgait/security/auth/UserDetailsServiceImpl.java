@@ -13,16 +13,16 @@ import java.util.ArrayList;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserRepository userRepository;
+	private final UserRepository userRepository;
 
-    public UserDetailsServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+	public UserDetailsServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var user = userRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found!"));
-        return new User(user.getEmail(), user.getPassword(), new ArrayList<>());
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		var user = userRepository.findByEmail(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found!"));
+		return new User(user.getEmail(), user.getPassword(), new ArrayList<>());
+	}
 }

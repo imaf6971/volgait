@@ -5,12 +5,12 @@ import java.util.UUID;
 import javax.validation.constraints.NotBlank;
 
 public class ApplicationForm {
-	
+
 	private UUID uuid;
-	
+
 	@NotBlank(message = "Название не должно быть пустым")
 	private String title;
-	
+
 	public ApplicationForm() {
 		uuid = UUID.randomUUID();
 		title = "";
@@ -31,5 +31,5 @@ public class ApplicationForm {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 }

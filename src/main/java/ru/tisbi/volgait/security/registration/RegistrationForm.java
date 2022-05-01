@@ -4,16 +4,16 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class RegistrationForm {
-    
+
 	@Email(message = "Введите валидный email!")
-    @NotBlank(message = "Email не должен быть пустым!")
-    private String email;
+	@NotBlank(message = "Email не должен быть пустым!")
+	private String email;
 
-    @NotBlank(message = "Пароль не должен быть пустым!")
-    private String password;
+	@NotBlank(message = "Пароль не должен быть пустым!")
+	private String password;
 
-    @NotBlank(message = "Повторите пароль!")
-    private String matchingPassword;
+	@NotBlank(message = "Повторите пароль!")
+	private String matchingPassword;
 
 	public String getEmail() {
 		return email;
@@ -38,5 +38,5 @@ public class RegistrationForm {
 	public void setMatchingPassword(String matchingPassword) {
 		this.matchingPassword = matchingPassword;
 	}
-    
+
 }
