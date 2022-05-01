@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegistrationController {
 
+	private final String FOLDER = "security/";
+
 	private final RegistrationService registrationService;
-	
+
 	public RegistrationController(RegistrationService registrationService) {
 		this.registrationService = registrationService;
 	}
@@ -23,19 +25,20 @@ public class RegistrationController {
 	@GetMapping("/registration")
 	public String showRegistrationForm(Model model) {
 		model.addAttribute("user", new RegistrationForm());
-		return "registration";
+		return FOLDER + "registration";
 	}
 
 	@PostMapping("/registration")
-	public String register(@ModelAttribute("user") @Valid RegistrationForm form, BindingResult bindingResult, HttpServletRequest httpRequest) {
+	public String register(@ModelAttribute("user") @Valid RegistrationForm form, BindingResult bindingResult,
+			HttpServletRequest httpRequest) {
 		if (bindingResult.hasErrors()) {
-			return "registration";
+			return FOLDER + "registration";
 		}
 		registrationService.register(form);
 		authenticateNewUser(form, httpRequest);
 		return "redirect:/";
 	}
-	
+
 	private void authenticateNewUser(RegistrationForm user, HttpServletRequest httpRequest) {
 		try {
 			httpRequest.login(user.getEmail(), user.getPassword());
