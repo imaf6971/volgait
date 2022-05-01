@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta th:replace="fragments/meta">
+  <title th:text="${app.title}"></title>
+</head>
+<header th:replace="fragments/header"/>
+<body>
+  <div class="container">
+    <h1 th:text="${app.title}" class="row justify-content-center mb-4">
+    </h1>
+    <h2 th:text="${app.uuid}" class="row justify-content-center mb-4"></h2>
+  </div>
+</body>
+</html>
