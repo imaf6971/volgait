@@ -7,9 +7,11 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegistrationController {
@@ -22,9 +24,13 @@ public class RegistrationController {
 		this.registrationService = registrationService;
 	}
 
+	@ModelAttribute("user")
+	public RegistrationForm user() {
+		return new RegistrationForm();
+	}
+
 	@GetMapping("/registration")
 	public String showRegistrationForm(Model model) {
-		model.addAttribute("user", new RegistrationForm());
 		return FOLDER + "registration";
 	}
 
@@ -37,6 +43,14 @@ public class RegistrationController {
 		registrationService.register(form);
 		authenticateNewUser(form, httpRequest);
 		return "redirect:/";
+	}
+
+	@ExceptionHandler(EmailAlreadyTakenException.class)
+	public ModelAndView emailAlreadyTakenHandler() {
+		ModelAndView mav = new ModelAndView(FOLDER + "registration");
+		mav.addObject("user", user());
+		mav.addObject("emailTaken", "Почта занята!");
+		return mav;
 	}
 
 	private void authenticateNewUser(RegistrationForm user, HttpServletRequest httpRequest) {

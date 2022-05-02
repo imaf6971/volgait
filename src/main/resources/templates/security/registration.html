@@ -22,6 +22,7 @@
             <input th:field="*{email}" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email</label>
             <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            <div class="alert alert-warning" th:if="${emailTaken}" th:text="${emailTaken}"></div>
         </div>
         <div class="form-floating pb-1">
             <input th:field="*{password}" type="password" class="form-control" id="floatingPassword" placeholder="Password">
