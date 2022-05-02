@@ -20,7 +20,8 @@ public class IndexController {
 	public String index(Model model, Authentication authentication) {
 		if (authentication != null) {
 			String email = authentication.getName();
-			model.addAttribute("applicationsCounter", applicationService.countUserApplications(email));
+			Long appsCounter = applicationService.countUserApplications(email);
+			model.addAttribute("appsCounter", appsCounter);
 		}
 		return "index";
 	}
