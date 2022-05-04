@@ -16,18 +16,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import ru.tisbi.volgait.applications.request.Request;
-import ru.tisbi.volgait.model.AbstractEntity;
+import ru.tisbi.volgait.model.NamedEntity;
 import ru.tisbi.volgait.security.user.User;
 
 @Entity
 @Table(name = "applications")
-public class Application extends AbstractEntity {
+public class Application extends NamedEntity {
 
 	@Column(name = "unique_id", unique = true)
 	private UUID uuid;
-
-	@Column(name = "title", nullable = false)
-	private String title;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "user_id", nullable = false, updatable = false)
@@ -44,9 +41,9 @@ public class Application extends AbstractEntity {
 
 	}
 
-	public Application(UUID uuid, String title, User creator) {
+	public Application(UUID uuid, String name, User creator) {
 		this.uuid = uuid;
-		this.title = title;
+		setName(name);
 		this.createdBy = creator;
 		this.creationDate = LocalDate.now();
 	}
@@ -57,14 +54,6 @@ public class Application extends AbstractEntity {
 
 	public void setUuid(UUID uuid) {
 		this.uuid = uuid;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public User getCreatedBy() {
