@@ -3,6 +3,7 @@ package ru.tisbi.volgait.security.registration;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@PasswordMatches(message = "Пароль должен совпадать!")
 public class RegistrationForm {
 
 	@Email(message = "Введите валидный email!")
