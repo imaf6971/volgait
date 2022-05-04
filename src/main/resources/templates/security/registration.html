@@ -33,6 +33,7 @@
             <input th:field="*{matchingPassword}" type="password" class="form-control" id="floatingPasswordRepeat" placeholder="Password">
             <label for="floatingPassword">Повторите пароль</label>
             <div class="alert alert-warning" th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}"></div>
+            <div class="alert alert-warning" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
     </form>
