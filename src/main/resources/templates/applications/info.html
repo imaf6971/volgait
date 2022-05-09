@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta th:replace="fragments/meta">
   <title th:text="${app.name}"></title>
 </head>
-<header th:replace="fragments/header"/>
+<header th:replace="fragments/header" />
+
 <body>
   <div class="container">
     <h1 th:text="${app.name}" class="row justify-content-center mb-4">
     </h1>
     <h2 th:text="${app.uuid}" class="row justify-content-center mb-4"></h2>
+    <h2 th:text="${app.creationDate}"></h2>
+    <div id="request">
+
+    </div>
+    <script th:inline="javascript">
+      window.onload = function () {
+        var chart = new CanvasJS.Chart("request", {
+        theme: "light2",
+        title: {
+          text: "Статистика запросов"
+        },
+        data: [{
+          dataPoints: [
+            [# th:each="request : ${requests}"]
+            {
+              label: [[${request.key}]],
+              y: [[${request.value}]]
+            },
+            [/]
+          ]
+        }]
+      });
+      chart.render();
+      }
+      
+    </script>
   </div>
 </body>
+
 </html>
