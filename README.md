@@ -49,6 +49,6 @@ POST /request?uuid=ec59af8a&title=registration&additionalInformation=username:im
 3. Фронтенд:
     - Thymeleaf. Библиотека-шаблонизатор для HTML. Используется для реализации View слоя.
     - Bootstrap. CSS Фреймворк для простой разработки визуальной части приложения.
-    - CanvasJS. JS библиотека для отрисовки графиков
+    - CanvasJS. JS библиотека для отрисовки графиков.
 4. СУБД PostgreSQL.
 5. Docker (+ compose) для развёртывания окружения  
