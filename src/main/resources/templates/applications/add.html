@@ -21,10 +21,12 @@
         <div class="form-floating mb-3">	
             <input th:field="*{uuid}" class="form-control">
             <label for="floatingInput">Уникальный идентификатор</label>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('uuid')}">Неправильный UUID!</div>
         </div>
         <div class="form-floating mb-3">
             <input th:field="*{title}" class="form-control">
             <label for="floatingPassword">Название</label>
+            <div class="alert alert-warning" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Добавить приложение</button>
     </form>

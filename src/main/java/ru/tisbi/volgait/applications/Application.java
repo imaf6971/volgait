@@ -5,6 +5,7 @@ import static javax.persistence.FetchType.EAGER;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -72,8 +73,12 @@ public class Application extends NamedEntity {
 		this.creationDate = creationDate;
 	}
 
+	public List<Request> getRequests() {
+		return Collections.unmodifiableList(requests);
+	}
+
 	public void addRequest(Request request) {
 		requests.add(request);
 	}
-
+	
 }

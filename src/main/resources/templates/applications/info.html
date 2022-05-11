@@ -11,32 +11,49 @@
   <div class="container">
     <h1 th:text="${app.name}" class="row justify-content-center mb-4">
     </h1>
-    <h2 th:text="${app.uuid}" class="row justify-content-center mb-4"></h2>
-    <h2 th:text="${app.creationDate}"></h2>
-    <div id="request">
+    <h2 class="row justify-content-center mb-4">Уникальный идентификатор: <span th:text="${app.uuid}"
+        th:remove="tag"></span></h2>
+    <h2 class="row justify-content-center mb-4">Дата создания: <span th:text="${app.creationDate}"
+        th:remove="tag"></span></h2>
 
+
+    <h3 class="row justify-content-center mb-4" th:if="${requests.isEmpty()}">
+      Запросов не поступало!
+    </h3>
+
+    <div th:if="${!requests.isEmpty()}" class="col dropdown">
+      <button th:text="${selectedFilter}" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+      </button>
+    <ul class=" dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li th:each="filter: ${filters}">
+          <a th:text="${filter.value}" th:href="@{''(filter=${filter.key})}" class="dropdown-item">
+          </a>
+        </li>
+        </ul>
+    </div >
+    <div th:if="${!requests.isEmpty()}" id="request">
     </div>
-    <script th:inline="javascript">
+    <script th:if="${!requests.isEmpty()}" th:inline="javascript">
       window.onload = function () {
         var chart = new CanvasJS.Chart("request", {
-        theme: "light2",
-        title: {
-          text: "Статистика запросов"
-        },
-        data: [{
-          dataPoints: [
+          theme: "light2",
+          title: {
+            text: "Статистика запросов"
+          },
+          data: [{
+            dataPoints: [
             [# th:each="request : ${requests}"]
             {
               label: [[${request.key}]],
               y: [[${request.value}]]
             },
             [/]
-          ]
+            ]
         }]
-      });
-      chart.render();
+        });
+        chart.render();
       }
-      
     </script>
   </div>
 </body>
